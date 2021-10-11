@@ -1,0 +1,45 @@
+        INP 		// leser et tall
+        STA n 		// lager tallet n i minnelokasjon
+start   INP 		
+        ADD s		// addere verdien i akkumulatoren med s
+        STA s		// lager summen s i minnelokasjon 
+        LDA n		// henter n 
+        SUB v		// subtraherer tallet i akkumulatoren, som er n, med v som er 1 
+        STA n		// lager n i minnelokasjon
+        BRZ ok		// hopper til ok hvis akkumulatoren er 0
+        BRA start	// hopper til adressen start 
+ok      LDA s 		// henter summen s 
+        OUT		// skriv summen ut 
+        LDA Enter	// henter variabelen Enter 
+        OTC 		// skriver ut ASCII tegn
+        LDA s 		// henter s
+loop    SUB m		// subtraherer s med m som er 2 
+        BRZ par		// hopper til par hvis akkumulatoren er 0
+        BRP loop	// hopper til loop hvis akkumulatoren er større eller lik 0
+        BRA odde	// hopper til odde 
+par     LDA P		// henter P
+        OTC		
+        LDA a		// henter a
+        OTC
+        LDA r		// henter r 
+        OTC
+        HLT		// stopp
+odde    LDA O		// henter O
+        OTC
+        LDA d		// henter d
+        OTC
+        OTC 
+        LDA e		// henter e 
+        OTC
+        HLT		// stopp 
+n       DAT 0		// = 0
+v       DAT 1		// = 1
+s       DAT 0		// = 0
+m       DAT 2		// = 2
+Enter   DAT 10		// = Enter
+P       DAT 80		// = 'P'
+a       DAT 97		// = 'a'
+r       DAT 114		// = 'r'
+O       DAT 79		// = 'O'
+d       DAT 100 	// = 'd'
+e       DAT 101 	// = 'e'
